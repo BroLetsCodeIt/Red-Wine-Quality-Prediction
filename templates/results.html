@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Prediction</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+    <!-- Navigation-->
+
+    <div class="container px-4 px-lg-5 mx-auto pt-[2rem]">
+        <a class="" href="/">Home</a>
+    </div>
+
+    <!-- Page Header-->
+    <header class="container mx-auto flex items-center justify-center h-[40rem] w-full">
+        <div class="w-full  flex items-center justify-center flex-col">
+            <h1 class="text-4xl font-bold tracking-tighter">Wine Quality</h1>
+            {% set prediction_val = prediction | float %}
+            {% if prediction_val > 2 and prediction_val < 3 %} 
+            <div
+                class="bg-gray-100 p-4 rounded-lg shadow-lg max-w-md mx-auto my-4">
+                <h1 class="text-2xl font-semibold text-gray-800 text-center">
+                    {{ prediction }}
+                </h1>
+                <small class="text-gray-600 px-4 font-semibold">
+                    A wine quality score below 2 typically signals that the wine has significant flaws or undesirable
+                    characteristics, indicating a poor drinking experience. This could mean that the wine has
+                    off-flavors, unpleasant aromas, an unbalanced taste, or other issues that affect its overall
+                    quality. Generally, wines with such low scores are not recommended for consumption or might even be
+                    considered faulty.
+                </small>
+            </div>
+           {% elif prediction_val >= 3 and prediction_val < 4 %}
+           <div
+           class="bg-gray-100 p-4 rounded-lg shadow-lg max-w-md mx-auto my-4">
+           <h1 class="text-2xl font-semibold text-gray-800 text-center">
+               {{ prediction }}
+           </h1>
+           <small class="text-gray-600 px-4 font-semibold">
+            This score range suggests that the wine is about average in quality. It likely has some redeeming qualities but might not be particularly impressive. It could be a decent choice for casual occasions, offering a basic wine experience without any significant issues.
+           </small>
+       </div>
+        {% elif prediction_val >= 4 and prediction_val < 6 %}
+        <div
+                class="bg-gray-100 p-4 rounded-lg shadow-lg max-w-md mx-auto my-4">
+                <h1 class="text-2xl font-semibold text-gray-800 text-center">
+                    {{ prediction }}
+                </h1>
+                <small class="text-gray-600 px-4 font-semibold">
+                    This score indicates that the wine is slightly above average to good. It generally has a pleasant flavor, decent balance, and acceptable characteristics, making it suitable for everyday drinking or informal gatherings. It might not reach the heights of premium wines but should offer a satisfactory experience.
+                </small> 
+            </div>
+
+            {% endif %}
+            
+          
+        </header>
+    </body>
+</html>
